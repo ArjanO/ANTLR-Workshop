@@ -14,7 +14,7 @@ public class ExampleListener extends TypeBaseListener {
 	
 	@Override
 	public void enterType(TypeContext ctx) {
-		printText = ctx.getText().equals("Boek");
+		printText = ctx.getText().equals("Book");
 	}
 	
 	@Override

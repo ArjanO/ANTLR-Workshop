@@ -12,7 +12,7 @@ import nl.han.ica.ap.antlr.workshop.TypeParser.TextContext;
 public class ExampleVisitor extends TypeBaseVisitor<Void> {
 	@Override
 	public Void visitStatement(StatementContext ctx) {
-		if (ctx.type().getText().equals("Boek")) {
+		if (ctx.type().getText().equals("Book")) {
 			return super.visitStatement(ctx);
 		} else {
 			return defaultResult();
