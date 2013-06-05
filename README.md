@@ -2,6 +2,23 @@
 
 Example source code for the ANTLR workshop. 
 
+## TypeText
+
+Example with a listener and visitor that shows how to extract de text of book items.
+
+Format to parse:
+```plain
+id:type { "Text" };
+```
+
+Example input:
+```plain
+antlr:Book { "The Definitive ANTLR 4 Reference" };
+jamesBondGoldfinger:Movie { "James Bond Goldfinger." };
+biographySteveJobs:Book { "Biography Steve Jobs" };
+djangoUnchained:Movie { "Django Unchained." };
+```
+
 ## Authors
 
 **Arjan Oortgiese**
