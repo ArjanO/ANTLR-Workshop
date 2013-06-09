@@ -29,10 +29,6 @@
 */
 grammar Type;
 
-@header {
-    package nl.han.ica.ap.antlr.workshop;
-}
-
 file			: statement+ ;
 statement		: id ':' type '{' text '}' ';' ;
 id				: IDENTIFIER ;
