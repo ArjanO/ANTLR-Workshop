@@ -29,9 +29,9 @@
  */
 package nl.han.ica.ap.antlr.workshop.typetext.visitor;
 
-import nl.han.ica.ap.antlr.workshop.TypeBaseVisitor;
-import nl.han.ica.ap.antlr.workshop.TypeParser.StatementContext;
-import nl.han.ica.ap.antlr.workshop.TypeParser.TextContext;
+import nl.han.ica.ap.antlr.workshop.typetext.TypeBaseVisitor;
+import nl.han.ica.ap.antlr.workshop.typetext.TypeParser.StatementContext;
+import nl.han.ica.ap.antlr.workshop.typetext.TypeParser.TextContext;
 
 /**
  * Example implementation with visitor.

@@ -34,8 +34,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 
-import nl.han.ica.ap.antlr.workshop.TypeLexer;
-import nl.han.ica.ap.antlr.workshop.TypeParser;
+import nl.han.ica.ap.antlr.workshop.typetext.TypeLexer;
+import nl.han.ica.ap.antlr.workshop.typetext.TypeParser;
 import nl.han.ica.ap.antlr.workshop.typetext.listener.ExampleListener;
 import nl.han.ica.ap.antlr.workshop.typetext.visitor.ExampleVisitor;
 

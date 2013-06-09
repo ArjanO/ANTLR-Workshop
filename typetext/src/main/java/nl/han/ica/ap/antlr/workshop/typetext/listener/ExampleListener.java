@@ -29,9 +29,9 @@
  */
 package nl.han.ica.ap.antlr.workshop.typetext.listener;
 
-import nl.han.ica.ap.antlr.workshop.TypeBaseListener;
-import nl.han.ica.ap.antlr.workshop.TypeParser.TextContext;
-import nl.han.ica.ap.antlr.workshop.TypeParser.TypeContext;
+import nl.han.ica.ap.antlr.workshop.typetext.TypeBaseListener;
+import nl.han.ica.ap.antlr.workshop.typetext.TypeParser.TextContext;
+import nl.han.ica.ap.antlr.workshop.typetext.TypeParser.TypeContext;
 
 /**
  * Example implementation with listener.
