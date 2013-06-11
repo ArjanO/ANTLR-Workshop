@@ -52,6 +52,7 @@ public class ClassControllerTest {
 		Class class2 = controller.getClassByName("School");
 		
 		assertEquals(class1, class2);
+		assertEquals(1, controller.getClasses().size());
 	}
 	
 	@Test
@@ -60,5 +61,6 @@ public class ClassControllerTest {
 		Class class2 = controller.getClassByName("Work");
 		
 		assertNotEquals(class1, class2);
+		assertEquals(2, controller.getClasses().size());
 	}
 }
