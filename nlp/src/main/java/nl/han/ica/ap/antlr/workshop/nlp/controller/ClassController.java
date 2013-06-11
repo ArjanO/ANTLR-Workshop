@@ -48,6 +48,15 @@ public class ClassController {
 	}
 	
 	/**
+	 * Get list of classes.
+	 * 
+	 * @return List of classes.
+	 */
+	public List<Class> getClasses() {
+		return classes;
+	}
+	
+	/**
 	 * Get existing class by name.
 	 * 
 	 * @param name Name of the class.
