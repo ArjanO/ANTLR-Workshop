@@ -70,6 +70,12 @@ public class Class {
 	 * @return Created association.
 	 */
 	public Association addAssociation(Class child) {
+		for (Association asso : associations) {
+			if (asso.getChildClass().equals(child)) {
+				return asso; // Association already exists.
+			}
+		}
+		
 		Association result = new Association(child);
 		
 		associations.add(result);
