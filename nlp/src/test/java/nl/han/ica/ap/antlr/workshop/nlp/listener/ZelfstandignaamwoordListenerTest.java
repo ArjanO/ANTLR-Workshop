@@ -32,6 +32,7 @@ package nl.han.ica.ap.antlr.workshop.nlp.listener;
 import java.util.Arrays;
 import java.util.Collection;
 
+import nl.han.ica.ap.antlr.workshop.nlp.model.Association;
 import nl.han.ica.ap.antlr.workshop.nlp.model.Class;
 import nl.han.ica.ap.antlr.workshop.nlp.NlpLexer;
 import nl.han.ica.ap.antlr.workshop.nlp.NlpParser;
@@ -100,12 +101,15 @@ public class ZelfstandignaamwoordListenerTest {
 		class1 = EasyMock.createMock(Class.class);
 		class2 = EasyMock.createMock(Class.class);
 		
-		class1.addAssociation(class2);
+		Association class1Association = new Association(class2);
+		
+		EasyMock.expect(class1.addAssociation(class2))
+			.andReturn(class1Association).anyTimes();
 		
 		EasyMock.expect(classController.getClassByName(class1Name))
 			.andReturn(class1).anyTimes();
 		EasyMock.expect(classController.getClassByName(class2Name))
-		.andReturn(class2).anyTimes();
+			.andReturn(class2).anyTimes();
 		
 		EasyMock.replay(class1);
 		EasyMock.replay(class2);

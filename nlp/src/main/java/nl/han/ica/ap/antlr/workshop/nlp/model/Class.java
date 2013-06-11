@@ -67,9 +67,14 @@ public class Class {
 	 * Add child association to parent class.
 	 * 
 	 * @param child Child class.
+	 * @return Created association.
 	 */
-	public void addAssociation(Class child) {
-		associations.add(new Association(child));
+	public Association addAssociation(Class child) {
+		Association result = new Association(child);
+		
+		associations.add(result);
+		
+		return result;
 	}
 	
 	/**
