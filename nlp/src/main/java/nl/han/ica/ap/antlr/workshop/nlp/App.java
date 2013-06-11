@@ -29,7 +29,78 @@
  */
 package nl.han.ica.ap.antlr.workshop.nlp;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+
+import nl.han.ica.ap.antlr.workshop.nlp.controller.ClassController;
+import nl.han.ica.ap.antlr.workshop.nlp.listener.ZelfstandignaamwoordListener;
+
+import org.antlr.v4.runtime.ANTLRInputStream;
+import org.antlr.v4.runtime.CommonTokenStream;
+import org.antlr.v4.runtime.tree.ParseTree;
+import org.antlr.v4.runtime.tree.ParseTreeWalker;
+
+/**
+ * Parse input form the console or from a file.
+ */
 public class App {
 	public static void main(String[] args) {
+		ANTLRInputStream input = null;
+		
+		if (args.length > 0) {
+			input = getStreamFromFile(args[0]);
+		} else {			
+			input = getStreamFromStdin();
+		}
+		
+		if (input != null) {
+			NlpLexer lexer = new NlpLexer(input);
+			CommonTokenStream tokens = new CommonTokenStream(lexer);
+			NlpParser parser = new NlpParser(tokens);
+			
+			ParseTree tree = parser.tekst();
+			
+			ClassController classController = new ClassController();
+			
+			ParseTreeWalker walker = new ParseTreeWalker();
+			walker.walk(
+					new ZelfstandignaamwoordListener(classController), 
+					tree);
+		}
+	}
+	
+	private static ANTLRInputStream getStreamFromStdin() {
+		ANTLRInputStream input = null;
+		
+		try {
+			input = new ANTLRInputStream(System.in);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		return input;
+	}
+	
+	private static ANTLRInputStream getStreamFromFile(String path) {
+		ANTLRInputStream input = null;
+		InputStream is = null;
+		
+		if (path != null) {
+			try {
+				is = new FileInputStream(path);
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		try {
+			input = new ANTLRInputStream(is);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		return input;
 	}
 }
