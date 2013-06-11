@@ -55,7 +55,13 @@ public class ScruffyExport {
 					sbText.append(",");
 				}
 				
+				boolean bFirst = true;
 				for (Association asso : item.getAssociations()) {
+					if (!bFirst) {
+						sbText.append(",");
+					}
+					
+					bFirst = false;
 					addAssociation(sbText, item, asso);
 				}
 			}

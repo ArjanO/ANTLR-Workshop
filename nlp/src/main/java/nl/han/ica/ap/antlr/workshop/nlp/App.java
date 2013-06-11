@@ -35,6 +35,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import nl.han.ica.ap.antlr.workshop.nlp.controller.ClassController;
+import nl.han.ica.ap.antlr.workshop.nlp.export.ScruffyExport;
 import nl.han.ica.ap.antlr.workshop.nlp.listener.ZelfstandignaamwoordListener;
 
 import org.antlr.v4.runtime.ANTLRInputStream;
@@ -68,6 +69,15 @@ public class App {
 			walker.walk(
 					new ZelfstandignaamwoordListener(classController), 
 					tree);
+			
+			ScruffyExport exporter = new ScruffyExport();
+			
+			String filepath = "target/export-" + 
+					(System.currentTimeMillis()) + ".png";
+			
+			exporter.export(classController.getClasses(), filepath);
+			
+			openImage(filepath);
 		}
 	}
 	
@@ -102,5 +112,17 @@ public class App {
 		}
 		
 		return input;
+	}
+	
+	private static void openImage(String path) {
+		try {
+			Process p = Runtime.getRuntime().exec(
+					String.format("eog %s", path));
+			p.waitFor();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 }
