@@ -29,8 +29,66 @@
  */
 package nl.han.ica.ap.antlr.workshop.nlp.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Stores candidate classes.
  */
 public class Class {
+	private String name;
+	private List<Association> associations;
+	
+	/**
+	 * Create class.
+	 * 
+	 * @param name Name of the class.
+	 * @throws IllegalArgumentException if name is null.
+	 */
+	public Class(String name) {
+		if (name == null) {
+			throw new IllegalArgumentException();
+		}
+		
+		this.name = name;
+		this.associations = new ArrayList<Association>();
+	}
+	
+	/**
+	 * Get name of the class.
+	 * 
+	 * @return Name of the class.
+	 */
+	public String getName() {
+		return name;
+	}
+	
+	/**
+	 * Add child association to parent class.
+	 * 
+	 * @param child Child class.
+	 */
+	public void addAssociation(Class child) {
+		associations.add(new Association(child));
+	}
+	
+	/**
+	 * Get class associations.
+	 * 
+	 * @return Associations
+	 */
+	public List<Association> getAssociations() {
+		return associations;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof Class) {
+			Class other = (Class)obj;
+			
+			return name.equals(other.name);
+		} else {
+			return super.equals(obj);
+		}
+	}
 }

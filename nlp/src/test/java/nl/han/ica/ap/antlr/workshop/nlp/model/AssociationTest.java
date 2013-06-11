@@ -39,7 +39,7 @@ import org.junit.Test;
 public class AssociationTest {
 	@Test
 	public void constructorTest() {
-		Class child = new Class();
+		Class child = new Class("Test");
 		
 		Association association = new Association(child);
 		Multiplicity parentMultiplicity = association.getParentMultiplicity();
