@@ -57,7 +57,8 @@ public class ClassController {
 	}
 	
 	/**
-	 * Get existing class by name.
+	 * Get existing class by name or create and return if the 
+	 * class don't exists.
 	 * 
 	 * @param name Name of the class.
 	 * @return Class if not exists a new instance.
