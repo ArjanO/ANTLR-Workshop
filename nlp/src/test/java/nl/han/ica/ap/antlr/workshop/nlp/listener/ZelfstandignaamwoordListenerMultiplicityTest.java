@@ -85,13 +85,6 @@ public class ZelfstandignaamwoordListenerMultiplicityTest {
 				"studenten",
 				"100",
 				"*"
-			},
-			{
-				"De HAN heeft 100 studenten.",
-				"HAN",
-				"studenten",
-				"100",
-				"100"
 			}
 		};
 		
