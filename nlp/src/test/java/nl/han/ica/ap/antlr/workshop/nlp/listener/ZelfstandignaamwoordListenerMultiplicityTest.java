@@ -115,12 +115,12 @@ public class ZelfstandignaamwoordListenerMultiplicityTest {
 		class1Association = new Association(class2);
 		
 		EasyMock.expect(class1.addAssociation(class2))
-			.andReturn(class1Association).anyTimes();
+			.andReturn(class1Association).atLeastOnce();
 		
 		EasyMock.expect(classController.getClassByName(class1Name))
-			.andReturn(class1).anyTimes();
+			.andReturn(class1).atLeastOnce();
 		EasyMock.expect(classController.getClassByName(class2Name))
-			.andReturn(class2).anyTimes();
+			.andReturn(class2).atLeastOnce();
 		
 		EasyMock.replay(class1);
 		EasyMock.replay(class2);
