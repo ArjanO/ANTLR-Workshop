@@ -29,6 +29,8 @@
  */
 package nl.han.ica.ap.antlr.workshop.nlp.listener;
 
+import nl.han.ica.ap.antlr.workshop.nlp.model.Class;
+import nl.han.ica.ap.antlr.workshop.nlp.model.Association;
 import nl.han.ica.ap.antlr.workshop.nlp.NlpBaseListener;
 import nl.han.ica.ap.antlr.workshop.nlp.controller.ClassController;
 
