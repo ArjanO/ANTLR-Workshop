@@ -30,6 +30,7 @@
 package nl.han.ica.ap.antlr.workshop.nlp.controller;
 
 import nl.han.ica.ap.antlr.workshop.nlp.model.Class;
+import nl.han.ica.ap.antlr.workshop.nlp.util.Plural;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -65,12 +66,12 @@ public class ClassController {
 	 */
 	public Class getClassByName(String name) {
 		for (Class c : classes) {
-			if (c.getName().equals(name)) {
+			if (Plural.pluralEquals(c.getName(), name)) {
 				return c;
 			}
 		}
 		
-		Class n = new Class(name);
+		Class n = new Class(Plural.singular(name));
 		classes.add(n);
 		return n;
 	}
