@@ -2,6 +2,18 @@
 
 Example source code for the ANTLR workshop. 
 
+## NLP
+
+Workshop exercise. For the not implemented version see the tag 'workshop'.
+
+Sample input:
+```plain
+De HAN heeft minimaal 100 studenten.
+Een student heeft maximaal 1 begeleider.
+De HAN heeft maximaal 20 begeleiders.
+Een student heeft een vak.
+```
+
 ## TypeText
 
 Example with a listener and visitor that shows how to extract de text of book items.
