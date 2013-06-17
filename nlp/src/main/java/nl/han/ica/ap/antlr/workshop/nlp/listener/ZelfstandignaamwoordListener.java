@@ -32,6 +32,8 @@ package nl.han.ica.ap.antlr.workshop.nlp.listener;
 import nl.han.ica.ap.antlr.workshop.nlp.model.Class;
 import nl.han.ica.ap.antlr.workshop.nlp.model.Association;
 import nl.han.ica.ap.antlr.workshop.nlp.NlpBaseListener;
+import nl.han.ica.ap.antlr.workshop.nlp.NlpParser.BijwoordContext;
+import nl.han.ica.ap.antlr.workshop.nlp.NlpParser.TelwoordContext;
 import nl.han.ica.ap.antlr.workshop.nlp.NlpParser.ZelfstandignaamwoordContext;
 import nl.han.ica.ap.antlr.workshop.nlp.NlpParser.ZinContext;
 import nl.han.ica.ap.antlr.workshop.nlp.controller.ClassController;
@@ -45,6 +47,9 @@ public class ZelfstandignaamwoordListener extends NlpBaseListener {
 	private Class class1;
 	private Class class2;
 	
+	private String bijwoord;
+	private String telwoord;
+	
 	public ZelfstandignaamwoordListener(ClassController classController) {
 		this.classController = classController;
 	}
@@ -53,6 +58,9 @@ public class ZelfstandignaamwoordListener extends NlpBaseListener {
 	public void enterZin(ZinContext ctx) {
 		class1 = null;
 		class2 = null;
+		
+		bijwoord = null;
+		telwoord = null;
 	}
 	
 	@Override
@@ -62,7 +70,25 @@ public class ZelfstandignaamwoordListener extends NlpBaseListener {
 		} else {
 			class2 = classController.getClassByName(ctx.getText());
 			
-			class1.addAssociation(class2);
+			Association a = class1.addAssociation(class2);
+			
+			if (bijwoord != null) {
+				if (bijwoord.equals("maximaal")) {
+					a.getChildMultiplicity().setUpperBound(telwoord);
+				} else if (bijwoord.equals("minimaal")) {
+					a.getChildMultiplicity().setLowerBound(telwoord);
+				}
+			}
 		}
+	}
+	
+	@Override
+	public void enterBijwoord(BijwoordContext ctx) {
+		bijwoord = ctx.getText();
+	}
+	
+	@Override
+	public void enterTelwoord(TelwoordContext ctx) {
+		telwoord = ctx.getText();
 	}
 }
