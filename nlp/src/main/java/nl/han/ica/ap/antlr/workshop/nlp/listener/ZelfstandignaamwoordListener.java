@@ -32,6 +32,8 @@ package nl.han.ica.ap.antlr.workshop.nlp.listener;
 import nl.han.ica.ap.antlr.workshop.nlp.model.Class;
 import nl.han.ica.ap.antlr.workshop.nlp.model.Association;
 import nl.han.ica.ap.antlr.workshop.nlp.NlpBaseListener;
+import nl.han.ica.ap.antlr.workshop.nlp.NlpParser.ZelfstandignaamwoordContext;
+import nl.han.ica.ap.antlr.workshop.nlp.NlpParser.ZinContext;
 import nl.han.ica.ap.antlr.workshop.nlp.controller.ClassController;
 
 /**
@@ -40,7 +42,27 @@ import nl.han.ica.ap.antlr.workshop.nlp.controller.ClassController;
 public class ZelfstandignaamwoordListener extends NlpBaseListener {
 	private ClassController classController;
 	
+	private Class class1;
+	private Class class2;
+	
 	public ZelfstandignaamwoordListener(ClassController classController) {
 		this.classController = classController;
+	}
+	
+	@Override
+	public void enterZin(ZinContext ctx) {
+		class1 = null;
+		class2 = null;
+	}
+	
+	@Override
+	public void enterZelfstandignaamwoord(ZelfstandignaamwoordContext ctx) {
+		if (class1 == null) {
+			class1 = classController.getClassByName(ctx.getText());
+		} else {
+			class2 = classController.getClassByName(ctx.getText());
+			
+			class1.addAssociation(class2);
+		}
 	}
 }
