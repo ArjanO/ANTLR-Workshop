@@ -29,4 +29,17 @@
 */
 grammar Nlp;
 
+tekst					: zin+;
+zin						: naamwoordgroep verbaleconstituent '.';
+naamwoordgroep			: (lidwoord| bijwoord telwoord) zelfstandignaamwoord;
+verbaleconstituent		: werkwoord naamwoordgroep;
+lidwoord				: WOORD;
+zelfstandignaamwoord	: WOORD;
+werkwoord				: WOORD;
+bijwoord				: WOORD;
+telwoord				: CIJFER;
+
+WOORD: ('a'..'z'|'A'..'Z')+;
+CIJFER: ('0'..'9')+;
+
 WS :  (' ' |'\n' |'\r' )+ -> skip ;
