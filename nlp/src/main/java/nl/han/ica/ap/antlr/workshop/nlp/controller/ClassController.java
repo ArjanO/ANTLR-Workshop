@@ -64,6 +64,14 @@ public class ClassController {
 	 * @return Class if not exists a new instance.
 	 */
 	public Class getClassByName(String name) {
-		return null; //TODO: Add implementation.
+		for (Class c : classes) {
+			if (c.getName().equals(name)) {
+				return c;
+			}
+		}
+		
+		Class n = new Class(name);
+		classes.add(n);
+		return n;
 	}
 }
