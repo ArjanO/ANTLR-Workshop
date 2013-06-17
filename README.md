@@ -6,7 +6,9 @@ Example source code for the ANTLR workshop.
 
 Workshop exercise. For the not implemented version see the tag 'workshop'.
 
-Sample input:
+This project use for the generation of UML Scruffy a offline YUML like diagram generator. See the section install Scruffy for more information.
+
+Example input:
 ```plain
 De HAN heeft minimaal 100 studenten.
 Een student heeft maximaal 1 begeleider.
@@ -30,6 +32,20 @@ jamesBondGoldfinger:Movie { "James Bond Goldfinger." };
 biographySteveJobs:Book { "Biography Steve Jobs" };
 djangoUnchained:Movie { "Django Unchained." };
 ```
+
+## Scruffy 
+
+### Linux
+
+Install Scruffy on Debian or Ubuntu.
+
+1. Install Python 2.7 ```sudo apt-get install python2.7```
+2. Install graphviz ```sudo apt-get install graphviz```
+3. Install librsvg2-bin ```sudo apt-get install librsvg2-bin```
+4. Install plotutils ```sudo apt-get install plotutils```
+5. Install PIL (Image module) ```sudo apt-get install python2.7-imaging```
+6. Download Scruffy from https://github.com/aivarsk/scruffy.
+7. Install Scruffy ```sudo ./setup.py install```
 
 ## Authors
 
